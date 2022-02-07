@@ -1,0 +1,5 @@
+/config/lib
+/config/node_modules
+/config/.config.nodes.json
+/config/package.json
+/config/.config.nodes.json
