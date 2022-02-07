@@ -1,11 +1,98 @@
 [
     {
-        "id": "7958612806afbec9",
-        "type": "tab",
-        "label": "Flow 1",
-        "disabled": false,
-        "info": "",
-        "env": []
+        "id": "0f0ec288cace878f",
+        "type": "mqtt in",
+        "z": "405cf6066176f6f6",
+        "name": "RH01",
+        "topic": "uniovi/poc/humidity/RH01",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "03c437b8de0c6001",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 170,
+        "y": 180,
+        "wires": [
+            [
+                "35416a6be4834bc7"
+            ]
+        ]
+    },
+    {
+        "id": "35416a6be4834bc7",
+        "type": "debug",
+        "z": "405cf6066176f6f6",
+        "name": "Debug",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 390,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "e17ec909ca534bc2",
+        "type": "mqtt in",
+        "z": "405cf6066176f6f6",
+        "name": "TP01",
+        "topic": "uniovi/poc/temperature/TP01",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "03c437b8de0c6001",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 170,
+        "y": 100,
+        "wires": [
+            [
+                "4b2818fbb669692d"
+            ]
+        ]
+    },
+    {
+        "id": "6b0cfb2c4c7c0ab3",
+        "type": "debug",
+        "z": "405cf6066176f6f6",
+        "name": "Debug",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 550,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "4b2818fbb669692d",
+        "type": "function",
+        "z": "405cf6066176f6f6",
+        "name": "Persist",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 370,
+        "y": 100,
+        "wires": [
+            [
+                "6b0cfb2c4c7c0ab3"
+            ]
+        ]
     },
     {
         "id": "03c437b8de0c6001",
@@ -32,42 +119,5 @@
         "willPayload": "",
         "willMsg": {},
         "sessionExpiry": ""
-    },
-    {
-        "id": "847f69c96380fb53",
-        "type": "mqtt in",
-        "z": "7958612806afbec9",
-        "name": "RH01",
-        "topic": "uniovi/poc/humidity/RH01",
-        "qos": "2",
-        "datatype": "auto",
-        "broker": "03c437b8de0c6001",
-        "nl": false,
-        "rap": true,
-        "rh": 0,
-        "inputs": 0,
-        "x": 270,
-        "y": 280,
-        "wires": [
-            [
-                "de1aa6590d778c50"
-            ]
-        ]
-    },
-    {
-        "id": "de1aa6590d778c50",
-        "type": "debug",
-        "z": "7958612806afbec9",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 510,
-        "y": 280,
-        "wires": []
     }
 ]
