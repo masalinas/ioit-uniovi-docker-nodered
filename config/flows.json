@@ -1,0 +1,73 @@
+[
+    {
+        "id": "7958612806afbec9",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "03c437b8de0c6001",
+        "type": "mqtt-broker",
+        "name": "Broker",
+        "broker": "192.168.1.55",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    },
+    {
+        "id": "847f69c96380fb53",
+        "type": "mqtt in",
+        "z": "7958612806afbec9",
+        "name": "RH01",
+        "topic": "uniovi/poc/humidity/RH01",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "03c437b8de0c6001",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 270,
+        "y": 280,
+        "wires": [
+            [
+                "de1aa6590d778c50"
+            ]
+        ]
+    },
+    {
+        "id": "de1aa6590d778c50",
+        "type": "debug",
+        "z": "7958612806afbec9",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 510,
+        "y": 280,
+        "wires": []
+    }
+]

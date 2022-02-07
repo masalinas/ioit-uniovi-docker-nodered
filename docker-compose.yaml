@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   gateway:
-    image: nodered/node-red
+    build: .
     container_name: gateway-iot
     ports:
       - 1880:1880
@@ -10,7 +10,7 @@ services:
     environment:
       - TZ=Europe/Madrid
     volumes:
-      - ./config/settings.js:/data/settings.js
+      - ./config:/data
     networks:
       - network-name
 

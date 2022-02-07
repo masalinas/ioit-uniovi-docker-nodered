@@ -12,3 +12,6 @@ No execute this command to create a new node-RED password compatible:
 ```shell
 node-red-admin hash-pw
 ```
+
+## update node-RED settings
+any node-RED configuration is set under settings.js file, so any configuration that you want configure open this file ans set the correct updates
