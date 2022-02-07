@@ -1,0 +1,19 @@
+version: "3.7"
+
+services:
+  gateway:
+    image: nodered/node-red
+    container_name: gateway-iot
+    ports:
+      - 1880:1880
+      - 1885:1885
+    environment:
+      - TZ=Europe/Madrid
+    volumes:
+      - ./config/settings.js:/data/settings.js
+    networks:
+      - network-name
+
+networks:
+    network-name:
+      name: uniovi
