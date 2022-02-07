@@ -2,7 +2,7 @@
     {
         "id": "0f0ec288cace878f",
         "type": "mqtt in",
-        "z": "405cf6066176f6f6",
+        "z": "3072cc022aa87cdd",
         "name": "RH01",
         "topic": "uniovi/poc/humidity/RH01",
         "qos": "2",
@@ -12,35 +12,18 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 170,
+        "x": 150,
         "y": 180,
         "wires": [
             [
-                "35416a6be4834bc7"
+                "91b6bfcabd1164ab"
             ]
         ]
     },
     {
-        "id": "35416a6be4834bc7",
-        "type": "debug",
-        "z": "405cf6066176f6f6",
-        "name": "Debug",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 390,
-        "y": 180,
-        "wires": []
-    },
-    {
         "id": "e17ec909ca534bc2",
         "type": "mqtt in",
-        "z": "405cf6066176f6f6",
+        "z": "3072cc022aa87cdd",
         "name": "TP01",
         "topic": "uniovi/poc/temperature/TP01",
         "qos": "2",
@@ -50,18 +33,18 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 170,
+        "x": 150,
         "y": 100,
         "wires": [
             [
-                "4b2818fbb669692d"
+                "2f13276c45c710d9"
             ]
         ]
     },
     {
         "id": "6b0cfb2c4c7c0ab3",
         "type": "debug",
-        "z": "405cf6066176f6f6",
+        "z": "3072cc022aa87cdd",
         "name": "Debug",
         "active": true,
         "tosidebar": true,
@@ -71,26 +54,138 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 550,
+        "x": 870,
         "y": 100,
         "wires": []
     },
     {
-        "id": "4b2818fbb669692d",
-        "type": "function",
-        "z": "405cf6066176f6f6",
+        "id": "f817831dcdf6ce42",
+        "type": "http request",
+        "z": "3072cc022aa87cdd",
         "name": "Persist",
-        "func": "\nreturn msg;",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "http://192.168.1.55:3000/api/Measures",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 670,
+        "y": 100,
+        "wires": [
+            [
+                "6b0cfb2c4c7c0ab3"
+            ]
+        ]
+    },
+    {
+        "id": "91b6bfcabd1164ab",
+        "type": "json",
+        "z": "3072cc022aa87cdd",
+        "name": "Parser",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 330,
+        "y": 180,
+        "wires": [
+            [
+                "4c81892b436a29d7"
+            ]
+        ]
+    },
+    {
+        "id": "4c81892b436a29d7",
+        "type": "function",
+        "z": "3072cc022aa87cdd",
+        "name": "Parser",
+        "func": "msg.payload.value = parseFloat(msg.payload.value);\nmsg.payload.date = Date.parse(msg.payload.date);\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 370,
+        "x": 490,
+        "y": 180,
+        "wires": [
+            [
+                "fb9fd284dceed5bb"
+            ]
+        ]
+    },
+    {
+        "id": "2f13276c45c710d9",
+        "type": "json",
+        "z": "3072cc022aa87cdd",
+        "name": "Parser",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 330,
         "y": 100,
         "wires": [
             [
-                "6b0cfb2c4c7c0ab3"
+                "04209cbb69651c4f"
+            ]
+        ]
+    },
+    {
+        "id": "04209cbb69651c4f",
+        "type": "function",
+        "z": "3072cc022aa87cdd",
+        "name": "Parser",
+        "func": "msg.payload.value = parseFloat(msg.payload.value);\nmsg.payload.date = Date.parse(msg.payload.date);\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 490,
+        "y": 100,
+        "wires": [
+            [
+                "f817831dcdf6ce42"
+            ]
+        ]
+    },
+    {
+        "id": "fa93cf8db91e71b8",
+        "type": "debug",
+        "z": "3072cc022aa87cdd",
+        "name": "Debug",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 870,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "fb9fd284dceed5bb",
+        "type": "http request",
+        "z": "3072cc022aa87cdd",
+        "name": "Persist",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "http://192.168.1.55:3000/api/Measures",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 670,
+        "y": 180,
+        "wires": [
+            [
+                "fa93cf8db91e71b8"
             ]
         ]
     },
