@@ -2,7 +2,7 @@
     {
         "id": "0f0ec288cace878f",
         "type": "mqtt in",
-        "z": "3072cc022aa87cdd",
+        "z": "9fbbc7af43cfbf6f",
         "name": "RH01",
         "topic": "uniovi/poc/humidity/RH01",
         "qos": "2",
@@ -13,7 +13,7 @@
         "rh": 0,
         "inputs": 0,
         "x": 150,
-        "y": 180,
+        "y": 380,
         "wires": [
             [
                 "91b6bfcabd1164ab"
@@ -23,7 +23,7 @@
     {
         "id": "e17ec909ca534bc2",
         "type": "mqtt in",
-        "z": "3072cc022aa87cdd",
+        "z": "9fbbc7af43cfbf6f",
         "name": "TP01",
         "topic": "uniovi/poc/temperature/TP01",
         "qos": "2",
@@ -34,7 +34,7 @@
         "rh": 0,
         "inputs": 0,
         "x": 150,
-        "y": 100,
+        "y": 160,
         "wires": [
             [
                 "2f13276c45c710d9"
@@ -42,26 +42,9 @@
         ]
     },
     {
-        "id": "6b0cfb2c4c7c0ab3",
-        "type": "debug",
-        "z": "3072cc022aa87cdd",
-        "name": "Debug",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 870,
-        "y": 100,
-        "wires": []
-    },
-    {
         "id": "f817831dcdf6ce42",
         "type": "http request",
-        "z": "3072cc022aa87cdd",
+        "z": "9fbbc7af43cfbf6f",
         "name": "Persist",
         "method": "POST",
         "ret": "obj",
@@ -72,24 +55,24 @@
         "proxy": "",
         "authType": "",
         "senderr": false,
-        "x": 670,
-        "y": 100,
+        "x": 710,
+        "y": 220,
         "wires": [
             [
-                "6b0cfb2c4c7c0ab3"
+                "90ace54a22456a48"
             ]
         ]
     },
     {
         "id": "91b6bfcabd1164ab",
         "type": "json",
-        "z": "3072cc022aa87cdd",
-        "name": "Parser",
+        "z": "9fbbc7af43cfbf6f",
+        "name": "JSON Parser",
         "property": "payload",
         "action": "",
         "pretty": false,
         "x": 330,
-        "y": 180,
+        "y": 380,
         "wires": [
             [
                 "4c81892b436a29d7"
@@ -99,7 +82,7 @@
     {
         "id": "4c81892b436a29d7",
         "type": "function",
-        "z": "3072cc022aa87cdd",
+        "z": "9fbbc7af43cfbf6f",
         "name": "Parser",
         "func": "msg.payload.value = parseFloat(msg.payload.value);\nmsg.payload.date = Date.parse(msg.payload.date);\n\nreturn msg;",
         "outputs": 1,
@@ -108,9 +91,11 @@
         "finalize": "",
         "libs": [],
         "x": 490,
-        "y": 180,
+        "y": 380,
         "wires": [
             [
+                "eb0444a3a75be249",
+                "0c7be2a2a1112d1d",
                 "fb9fd284dceed5bb"
             ]
         ]
@@ -118,13 +103,13 @@
     {
         "id": "2f13276c45c710d9",
         "type": "json",
-        "z": "3072cc022aa87cdd",
-        "name": "Parser",
+        "z": "9fbbc7af43cfbf6f",
+        "name": "JSON Parser",
         "property": "payload",
         "action": "",
         "pretty": false,
         "x": 330,
-        "y": 100,
+        "y": 160,
         "wires": [
             [
                 "04209cbb69651c4f"
@@ -134,7 +119,7 @@
     {
         "id": "04209cbb69651c4f",
         "type": "function",
-        "z": "3072cc022aa87cdd",
+        "z": "9fbbc7af43cfbf6f",
         "name": "Parser",
         "func": "msg.payload.value = parseFloat(msg.payload.value);\nmsg.payload.date = Date.parse(msg.payload.date);\n\nreturn msg;",
         "outputs": 1,
@@ -143,34 +128,19 @@
         "finalize": "",
         "libs": [],
         "x": 490,
-        "y": 100,
+        "y": 160,
         "wires": [
             [
+                "7127d0d089512b4c",
+                "bc5640886ea4c05c",
                 "f817831dcdf6ce42"
             ]
         ]
     },
     {
-        "id": "fa93cf8db91e71b8",
-        "type": "debug",
-        "z": "3072cc022aa87cdd",
-        "name": "Debug",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 870,
-        "y": 180,
-        "wires": []
-    },
-    {
         "id": "fb9fd284dceed5bb",
         "type": "http request",
-        "z": "3072cc022aa87cdd",
+        "z": "9fbbc7af43cfbf6f",
         "name": "Persist",
         "method": "POST",
         "ret": "obj",
@@ -181,13 +151,227 @@
         "proxy": "",
         "authType": "",
         "senderr": false,
-        "x": 670,
-        "y": 180,
+        "x": 710,
+        "y": 440,
         "wires": [
             [
-                "fa93cf8db91e71b8"
+                "060fa5f23220e3b8"
             ]
         ]
+    },
+    {
+        "id": "7127d0d089512b4c",
+        "type": "ui_gauge",
+        "z": "9fbbc7af43cfbf6f",
+        "name": "TP01",
+        "group": "b60ab0d12434d289",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Temperature",
+        "label": "C º",
+        "format": "{{payload.value}}",
+        "min": 0,
+        "max": "40",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 930,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "eb0444a3a75be249",
+        "type": "ui_gauge",
+        "z": "9fbbc7af43cfbf6f",
+        "name": "RH01",
+        "group": "b60ab0d12434d289",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Humidity",
+        "label": "%",
+        "format": "{{payload.value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 930,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "6bda5b71188a6a21",
+        "type": "ui_chart",
+        "z": "9fbbc7af43cfbf6f",
+        "name": "TP01",
+        "group": "b60ab0d12434d289",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "label": "TP01",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "50",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 930,
+        "y": 100,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "bc5640886ea4c05c",
+        "type": "function",
+        "z": "9fbbc7af43cfbf6f",
+        "name": "Adapter",
+        "func": "msg.payload = parseFloat(msg.payload.value);\nmsg.topic = Date.parse(msg.payload.date);\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 720,
+        "y": 100,
+        "wires": [
+            [
+                "6bda5b71188a6a21"
+            ]
+        ]
+    },
+    {
+        "id": "0c7be2a2a1112d1d",
+        "type": "function",
+        "z": "9fbbc7af43cfbf6f",
+        "name": "Adapter",
+        "func": "msg.payload = parseFloat(msg.payload.value);\nmsg.topic = Date.parse(msg.payload.date);\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 720,
+        "y": 320,
+        "wires": [
+            [
+                "93d413d95376f2bf"
+            ]
+        ]
+    },
+    {
+        "id": "93d413d95376f2bf",
+        "type": "ui_chart",
+        "z": "9fbbc7af43cfbf6f",
+        "name": "RH01",
+        "group": "b60ab0d12434d289",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "label": "RH01",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "100",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 930,
+        "y": 320,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "90ace54a22456a48",
+        "type": "debug",
+        "z": "9fbbc7af43cfbf6f",
+        "name": "Debug",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 930,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "060fa5f23220e3b8",
+        "type": "debug",
+        "z": "9fbbc7af43cfbf6f",
+        "name": "Debug",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 930,
+        "y": 440,
+        "wires": []
     },
     {
         "id": "03c437b8de0c6001",
@@ -214,5 +398,24 @@
         "willPayload": "",
         "willMsg": {},
         "sessionExpiry": ""
+    },
+    {
+        "id": "b60ab0d12434d289",
+        "type": "ui_group",
+        "name": "IoT Dashboard",
+        "tab": "280ff12e4e957d89",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "280ff12e4e957d89",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
     }
 ]
