@@ -53,8 +53,8 @@ http://localhost:1880/
 node-RED Login
 ![node-RED Login](captures/node-RED_login.png "node-RED Login")
 
-node-RED Dashboard
-![node-RED Dashboard](captures/node-RED_dashboard.png "node-RED Dashboard")
+node-RED Designer
+![node-RED Designer](captures/node-RED_designer.png "node-RED Designer")
 
 node-RED MongoDB persistence
 ![node-RED Persistence](captures/node-RED-persistence.png "node-RED Persistence")
