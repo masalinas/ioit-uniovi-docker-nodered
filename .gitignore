@@ -2,4 +2,9 @@
 /config/node_modules
 /config/.config.nodes.json
 /config/package.json
+/config/.config.runtime.json
+/config/.config.users.json
+/config/.config.users.json.backup
 /config/.config.nodes.json
+/config/.sessions.json
+/config/package.json
