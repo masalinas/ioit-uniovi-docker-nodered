@@ -1,155 +1,5 @@
 [
     {
-        "id": "9fbbc7af43cfbf6f",
-        "type": "tab",
-        "label": "IoT",
-        "disabled": false,
-        "info": "IoT PoC Flow",
-        "env": []
-    },
-    {
-        "id": "03c437b8de0c6001",
-        "type": "mqtt-broker",
-        "name": "Broker",
-        "broker": "192.168.1.55",
-        "port": "1883",
-        "clientid": "",
-        "autoConnect": true,
-        "usetls": false,
-        "protocolVersion": "4",
-        "keepalive": "60",
-        "cleansession": true,
-        "birthTopic": "",
-        "birthQos": "0",
-        "birthPayload": "",
-        "birthMsg": {},
-        "closeTopic": "",
-        "closeQos": "0",
-        "closePayload": "",
-        "closeMsg": {},
-        "willTopic": "",
-        "willQos": "0",
-        "willPayload": "",
-        "willMsg": {},
-        "sessionExpiry": ""
-    },
-    {
-        "id": "280ff12e4e957d89",
-        "type": "ui_tab",
-        "name": "Home",
-        "icon": "dashboard",
-        "disabled": false,
-        "hidden": false
-    },
-    {
-        "id": "fc4536af2de4346f",
-        "type": "ui_base",
-        "theme": {
-            "name": "theme-light",
-            "lightTheme": {
-                "default": "#0094CE",
-                "baseColor": "#0094CE",
-                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
-                "edited": true,
-                "reset": false
-            },
-            "darkTheme": {
-                "default": "#097479",
-                "baseColor": "#097479",
-                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
-                "edited": false
-            },
-            "customTheme": {
-                "name": "Untitled Theme 1",
-                "default": "#4B7930",
-                "baseColor": "#4B7930",
-                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
-            },
-            "themeState": {
-                "base-color": {
-                    "default": "#0094CE",
-                    "value": "#0094CE",
-                    "edited": false
-                },
-                "page-titlebar-backgroundColor": {
-                    "value": "#0094CE",
-                    "edited": false
-                },
-                "page-backgroundColor": {
-                    "value": "#fafafa",
-                    "edited": false
-                },
-                "page-sidebar-backgroundColor": {
-                    "value": "#ffffff",
-                    "edited": false
-                },
-                "group-textColor": {
-                    "value": "#1bbfff",
-                    "edited": false
-                },
-                "group-borderColor": {
-                    "value": "#ffffff",
-                    "edited": false
-                },
-                "group-backgroundColor": {
-                    "value": "#ffffff",
-                    "edited": false
-                },
-                "widget-textColor": {
-                    "value": "#111111",
-                    "edited": false
-                },
-                "widget-backgroundColor": {
-                    "value": "#0094ce",
-                    "edited": false
-                },
-                "widget-borderColor": {
-                    "value": "#ffffff",
-                    "edited": false
-                },
-                "base-font": {
-                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
-                }
-            },
-            "angularTheme": {
-                "primary": "indigo",
-                "accents": "blue",
-                "warn": "red",
-                "background": "grey",
-                "palette": "light"
-            }
-        },
-        "site": {
-            "name": "Node-RED Dashboard",
-            "hideToolbar": "false",
-            "allowSwipe": "false",
-            "lockMenu": "false",
-            "allowTempTheme": "true",
-            "dateFormat": "DD/MM/YYYY",
-            "sizes": {
-                "sx": 48,
-                "sy": 48,
-                "gx": 6,
-                "gy": 6,
-                "cx": 6,
-                "cy": 6,
-                "px": 0,
-                "py": 0
-            }
-        }
-    },
-    {
-        "id": "b60ab0d12434d289",
-        "type": "ui_group",
-        "name": "IoT Dashboard",
-        "tab": "280ff12e4e957d89",
-        "order": 1,
-        "disp": true,
-        "width": "6",
-        "collapse": false,
-        "className": ""
-    },
-    {
         "id": "0f0ec288cace878f",
         "type": "mqtt in",
         "z": "9fbbc7af43cfbf6f",
@@ -319,7 +169,7 @@
         "width": 0,
         "height": 0,
         "gtype": "gage",
-        "title": "Temperature",
+        "title": "Temperature [C º]",
         "label": "C º",
         "format": "{{payload.value}}",
         "min": 0,
@@ -346,11 +196,11 @@
         "width": 0,
         "height": 0,
         "gtype": "gage",
-        "title": "Humidity",
+        "title": "Humidity [%]",
         "label": "%",
         "format": "{{payload.value}}",
         "min": 0,
-        "max": "100",
+        "max": "150",
         "colors": [
             "#00b500",
             "#e6e600",
@@ -375,14 +225,14 @@
         "label": "TP01",
         "chartType": "line",
         "legend": "false",
-        "xformat": "mm:ss",
+        "xformat": "HH:mm:ss",
         "interpolate": "linear",
         "nodata": "",
-        "dot": false,
+        "dot": true,
         "ymin": "0",
         "ymax": "50",
         "removeOlder": 1,
-        "removeOlderPoints": "",
+        "removeOlderPoints": "10",
         "removeOlderUnit": "60",
         "cutout": 0,
         "useOneColor": false,
@@ -457,14 +307,14 @@
         "label": "RH01",
         "chartType": "line",
         "legend": "false",
-        "xformat": "mm:ss",
+        "xformat": "HH:mm:ss",
         "interpolate": "linear",
         "nodata": "",
-        "dot": false,
+        "dot": true,
         "ymin": "0",
-        "ymax": "100",
+        "ymax": "150",
         "removeOlder": 1,
-        "removeOlderPoints": "",
+        "removeOlderPoints": "10",
         "removeOlderUnit": "60",
         "cutout": 0,
         "useOneColor": false,
@@ -522,5 +372,50 @@
         "x": 930,
         "y": 440,
         "wires": []
+    },
+    {
+        "id": "03c437b8de0c6001",
+        "type": "mqtt-broker",
+        "name": "Broker",
+        "broker": "192.168.1.55",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    },
+    {
+        "id": "b60ab0d12434d289",
+        "type": "ui_group",
+        "name": "IoT Dashboard",
+        "tab": "280ff12e4e957d89",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "280ff12e4e957d89",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
     }
 ]
